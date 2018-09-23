@@ -14,6 +14,7 @@
 		A9CAD590215722A100319A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9CAD58E215722A100319A2D /* LaunchScreen.storyboard */; };
 		A9CAD59B215722A100319A2D /* MapTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CAD59A215722A100319A2D /* MapTestTests.swift */; };
 		A9CAD5A6215722A100319A2D /* MapTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CAD5A5215722A100319A2D /* MapTestUITests.swift */; };
+		A9CAD5B52157257500319A2D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CAD5B42157257500319A2D /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A9CAD5A1215722A100319A2D /* MapTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CAD5A5215722A100319A2D /* MapTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTestUITests.swift; sourceTree = "<group>"; };
 		A9CAD5A7215722A100319A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9CAD5B42157257500319A2D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CAD5B52157257500319A2D /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 				A9CAD599215722A100319A2D /* MapTestTests */,
 				A9CAD5A4215722A100319A2D /* MapTestUITests */,
 				A9CAD583215722A000319A2D /* Products */,
+				A9CAD5B32157257500319A2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +127,14 @@
 				A9CAD5A7215722A100319A2D /* Info.plist */,
 			);
 			path = MapTestUITests;
+			sourceTree = "<group>";
+		};
+		A9CAD5B32157257500319A2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9CAD5B42157257500319A2D /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +206,11 @@
 					A9CAD581215722A000319A2D = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A9CAD595215722A100319A2D = {
 						CreatedOnToolsVersion = 9.0;
