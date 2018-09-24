@@ -7,19 +7,80 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    let locationManager = CLLocationManager()
+    let regionInMeters: Double = 10000
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        checkLocationServices()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func setupLocationManager(){
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+    }
+    
+    func checkLocationServices() {
+        if(CLLocationManager.locationServicesEnabled()){
+          setupLocationManager()
+          checkLocationAuthorization()
+        }
+        else{
+            //Display message showing location services are disabled
+        }
+    }
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            //centerViewOnUserLocation()
+            //locationManager.startUpdatingLocation()
+            break
+        case .denied:
+            // Show alert instructing them how to turn on permissions
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            // Show an alert letting them know what's up
+            break
+        case .authorizedAlways:
+            break
+        }
+    }
+    
+    /*func centerViewOnUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+    }*/
 
 
+
+}
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //Code goes here
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        // Code goes here
+    }
 }
 
